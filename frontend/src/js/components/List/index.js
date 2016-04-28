@@ -1,16 +1,26 @@
 import React from 'react'
-import HostListItem from '../HostListItem'
-import CandidateListItem from '../CandidateListItem'
+import {Button, Row, Col, FormGroup, Checkbox} from 'react-bootstrap'
+import ListItem from '../ListItem'
 
 export default (props) => {
-  return (
+  return (props.volunteers.length === 0)
+    ? <h1> No volunteers found </h1>
+    : (
     <ul style={ulStyle}>
-      {props.type === 'roles'
-        ? props.roles.filter((role) => props.filterFunction(role))
-          .map((role) => <HostListItem role={role} getState={props.getState} changeState={props.changeState} liStyle={liStyle}/>)
-        : props.candidates.filter((candidate) => props.filterFunction(candidate))
-          .map((candidate) => <CandidateListItem candidate={candidate} changeState={props.changeState} getState={props.getState} liStyle={liStyle} />)
-      }
+      <li style={liStyle}>
+        <Row>
+          <Col sm={2}> Name </Col>
+          <Col sm={2}> University </Col>
+          <Col sm={2}> Subject </Col>
+          <Col sm={1}> Location </Col>
+          <Col sm={1}> DBS </Col>
+          <Col sm={3}> Notes </Col>
+          <Col sm={1}> Add </Col>
+        </Row>
+      </li>
+      {props.volunteers.map((volunteer) => {
+        return <ListItem volunteer={volunteer} />
+      })}
     </ul>
   )
 }
@@ -18,14 +28,14 @@ export default (props) => {
 const ulStyle = {
   padding: '2em',
   borderRadius: '10px',
-  color: 'white',
-  position: 'inherit'
+  color: 'black',
+  position: 'inherit',
+  listStyleType: 'none',
+  backgroundColor: 'steelblue'
 }
 
 const liStyle = {
-  listStyleType: 'none',
   color: 'black',
-  fontSize: '1.7em',
-  textDecoration: 'none',
-  cursor: 'pointer'
+  fontSize: '1.1em',
+  fontWeight: 'bold'
 }

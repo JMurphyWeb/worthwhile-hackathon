@@ -10,6 +10,7 @@ const processDatabase = (string) => {
   return string.split('\n')
     .map((rowString) => rowString.split('\t'))
     .map((rowArray, i) => {
+      console.log(rowArray[1], i);
       rowArray[6] = rowArray[6].replace(/"/g, '')
       return rowArray
     })
