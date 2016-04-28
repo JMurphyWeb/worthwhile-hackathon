@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'bootstrap-navbar';
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: $main-font;
+  margin-bottom: $footer-height;
+}
+
+.collapseBox {
+  padding-top: 48px;
+}
+
+.CLogin {
+  padding-top: 20px;
+  padding-bottom: 14px;
+}
+
+.HLgin {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
