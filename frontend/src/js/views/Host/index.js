@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Grid, Row, Col} from 'react-bootstrap'
-
+import List from '../../components/List'
 import Filters from '../../components/Filters/index.js'
 
 const ulStyle = {
@@ -8,8 +8,6 @@ const ulStyle = {
   padding: '2em',
   borderRadius: '10px'
 }
-
-const loggedInRoleID = '2'
 
 export default class HostView extends Component {
   constructor () {
@@ -24,29 +22,42 @@ export default class HostView extends Component {
     this.changeState = this.changeState.bind(this)
   }
 
-
   changeState (newState) {
-    this.setState(Object.assign(this.state, newState))
-    console.log(this.state);
+    this.setState(newState)
+    console.log(this.state)
   }
 
   componentDidMount () {
     let xhr = new XMLHttpRequest() // eslint-disable-line
     xhr.onreadystatechange = () => {
-      console.log(xhr.status, xhr.readyState)
       if (xhr.status === 200 && xhr.readyState === 4) {
-        console.log('response', JSON.parse(xhr.responseText))
-        // this.setState({candidates: JSON.parse(xhr.responseText)})
+        const volunteers = JSON.parse(xhr.responseText).map((volunteer, i) => {
+          return {
+            ...volunteer,
+            index: i,
+            checked: false
+          }
+        })
+        this.setState({volunteers})
       }
     }
     xhr.open('GET', '/getAllVolunteers')
     xhr.send()
   }
 
-  // getState () {
-  //   return this.state
-  // }
   render () {
+    const filteredList = this.state.volunteers.filter((x) => {
+      return (this.state.university.length > 0)
+        ? x.university === this.state.university
+        : true
+    }).filter( x => {
+      return (this.state.subjectGroup.length > 0)
+        ? x.subjectGroup === this.state.subjectGroup
+        : true
+    }).filter( x => {
+      return x.subject.toLowerCase().indexOf(this.state.subject) > -1
+    })
+    console.log(filteredList)
     return (
       <Grid>
         <Row>
@@ -55,12 +66,9 @@ export default class HostView extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={2}>
-            <h1>Generate emails Component</h1>
-          </Col>
-          <Col md={10}>
+          <Col md={12}>
             <div>
-              <h1>filtered list of volunteers</h1>
+              <List volunteers={filteredList} />
             </div>
           </Col>
         </Row>

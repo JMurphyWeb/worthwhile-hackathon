@@ -13,7 +13,7 @@ export default class Filters extends React.Component {
             <FormControl
               type="text"
               placeholder="enter a subject"
-              onChange={(e) => {this.props.changeState({subject: e.target.value})}}
+              onChange={(e) => {this.props.changeState({subject: e.target.value.toLowerCase()})}}
               />
           </FormGroup>
 
@@ -56,7 +56,7 @@ export default class Filters extends React.Component {
             <FormControl
               type="text"
               placeholder="school location"
-              onChange={(e) => {this.props.changeState({location: e.target.value})}}              
+              onChange={(e) => {this.props.changeState({location: e.target.value.toLowerCase()})}}              
               />
           </FormGroup>
 
