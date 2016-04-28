@@ -1,5 +1,7 @@
 # Worthwhile
 
+[![Join the chat at https://gitter.im/JMurphyWeb/worthwhile-hackathon](https://badges.gitter.im/JMurphyWeb/worthwhile-hackathon.svg)](https://gitter.im/JMurphyWeb/worthwhile-hackathon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Join the chat at https://gitter.im/FAC7/worthwhile](https://badges.gitter.im/FAC7/worthwhile.svg)](https://gitter.im/FAC7/worthwhile?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # Who?
