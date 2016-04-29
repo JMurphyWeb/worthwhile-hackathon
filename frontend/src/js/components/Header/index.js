@@ -32,15 +32,17 @@ export default class Header extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse pullRight>
           <Nav pullRight>
-            {this.props.menuItems.map(item => {
-              return (
+
                 <li onClick={() => { this.setState({ menuOpen: false }) }}
                     role='presentation'
-                    key={item + '-li'}>
-                  <Link key={item} to={'/' + item}>{item}</Link>
+                    key={0 + '-li'}>
+                  <Link key={0} to={'/'}>Home</Link>
                 </li>
-              )
-            })}
+                <li onClick={() => { this.setState({ menuOpen: false }) }}
+                    role='presentation'
+                    key={1 + '-li'}>
+                  <Link key={1} to={'/form'}>New Volunteer</Link>
+                </li>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

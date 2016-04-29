@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Row, Col, FormGroup, Checkbox} from 'react-bootstrap'
+import { Button, Row, Col, FormGroup, Checkbox } from 'react-bootstrap'
 import ListItem from '../ListItem'
 
 export default (props) => {
@@ -19,7 +19,7 @@ export default (props) => {
         </Row>
       </li>
       {props.volunteers.map((volunteer) => {
-        return <ListItem volunteer={volunteer} />
+        return <ListItem changeChecked={props.changeChecked} volunteer={volunteer} />
       })}
     </ul>
   )
@@ -28,14 +28,14 @@ export default (props) => {
 const ulStyle = {
   padding: '2em',
   borderRadius: '10px',
-  color: 'black',
+  color: '#154750',
   position: 'inherit',
-  listStyleType: 'none',
-  backgroundColor: 'steelblue'
+  listStyleType: 'none'
 }
 
 const liStyle = {
-  color: 'black',
+  color: '#154750',
   fontSize: '1.1em',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  marginTop: '5px'
 }

@@ -1,13 +1,9 @@
-import React, {Component} from 'react'
-import {Grid, Row, Col} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Grid, Row, Col, Button } from 'react-bootstrap'
 import List from '../../components/List'
 import Filters from '../../components/Filters/index.js'
+import Emails from '../../components/Emails'
 
-const ulStyle = {
-  backgroundColor: '#0075B2',
-  padding: '2em',
-  borderRadius: '10px'
-}
 
 export default class HostView extends Component {
   constructor () {
@@ -20,6 +16,27 @@ export default class HostView extends Component {
       subjectGroup: ''
     }
     this.changeState = this.changeState.bind(this)
+    this.changeChecked = this.changeChecked.bind(this)
+    this.uncheckAll = this.uncheckAll.bind(this)
+  }
+
+  uncheckAll () {
+    const newVols = this.state.volunteers.map(vol => {
+      return (vol.checked)
+        ? Object.assign({}, vol, {checked: false})
+        : vol
+    })
+
+    this.setState({ volunteers: newVols })
+  }
+
+  changeChecked (i, bool) {
+    const newVols = [
+      ...this.state.volunteers.slice(0,i),
+      Object.assign({}, this.state.volunteers[i], {checked: bool}),
+      ...this.state.volunteers.slice(i + 1)
+    ]
+    this.setState({ volunteers: newVols })
   }
 
   changeState (newState) {
@@ -57,22 +74,34 @@ export default class HostView extends Component {
     }).filter( x => {
       return x.subject.toLowerCase().indexOf(this.state.subject) > -1
     })
-    console.log(filteredList)
     return (
-      <Grid>
-        <Row>
+      <div>
+        <Grid>
+          <Row>
+            <Col md={12}>
+              <Filters changeState={this.changeState}/>
+            </Col>
+          </Row>
+          <Row>
           <Col md={12}>
-            <Filters changeState={this.changeState}/>
+          <Emails volunteers={this.state.volunteers} uncheckAll={this.uncheckAll} changeState={this.changeState}/>
           </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
-            <div>
-              <List volunteers={filteredList} />
-            </div>
-          </Col>
-        </Row>
-      </Grid>
+          </Row>
+          <Row>
+            <Col md={12}>
+              <div>
+                <List changeChecked={this.changeChecked} volunteers={filteredList} />
+              </div>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     )
   }
+}
+
+const ulStyle = {
+  backgroundColor: '#0075B2',
+  padding: '2em',
+  borderRadius: '10px'
 }
