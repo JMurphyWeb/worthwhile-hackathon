@@ -44947,13 +44947,12 @@
 	      var newVols = this.state.volunteers.map(function (vol) {
 	        return vol.checked ? Object.assign({}, vol, { checked: false }) : vol;
 	      });
-
 	      this.setState({ volunteers: newVols });
 	    }
 	  }, {
 	    key: 'changeChecked',
 	    value: function changeChecked(i, bool) {
-	      var newVols = [].concat(_toConsumableArray(this.state.volunteers.slice(0, i)), [Object.assign({}, this.state.volunteers[i], { checked: bool })], _toConsumableArray(this.state.volunteers.slice(i + 1)));
+	      var newVols = [].concat(_toConsumableArray(this.state.volunteers.slice(0, i)), [Object.assign({}, this.state.volunteers[i], { checked: !this.state.volunteers[i].checked })], _toConsumableArray(this.state.volunteers.slice(i + 1)));
 	      this.setState({ volunteers: newVols });
 	    }
 	  }, {
@@ -44988,7 +44987,7 @@
 	      var _this3 = this;
 
 	      var filteredList = this.state.volunteers.filter(function (x) {
-	        return _this3.state.university.length > 0 ? x.university === _this3.state.university : true;
+	        return _this3.state.university.length > 0 ? x.university.indexOf(_this3.state.university) > -1 : true;
 	      }).filter(function (x) {
 	        return _this3.state.subjectGroup.length > 0 ? x.subjectGroup === _this3.state.subjectGroup : true;
 	      }).filter(function (x) {
@@ -45006,7 +45005,7 @@
 	            _react2.default.createElement(
 	              _reactBootstrap.Col,
 	              { md: 12 },
-	              _react2.default.createElement(_index2.default, { changeState: this.changeState })
+	              _react2.default.createElement(_index2.default, { values: this.state, changeState: this.changeState })
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -45227,6 +45226,7 @@
 	          null,
 	          _react2.default.createElement(_reactBootstrap.Checkbox, {
 	            inline: true,
+	            checked: volunteer.checked,
 	            onChange: function onChange(e) {
 	              props.changeChecked(volunteer.index, e.target.checked);
 	            }
@@ -45299,6 +45299,7 @@
 	            _react2.default.createElement(_reactBootstrap.FormControl, {
 	              type: 'text',
 	              placeholder: 'enter a subject',
+	              value: this.props.values.subject,
 	              onChange: function onChange(e) {
 	                _this2.props.changeState({ subject: e.target.value.toLowerCase() });
 	              }
@@ -45313,31 +45314,14 @@
 	              null,
 	              'University'
 	            ),
-	            _react2.default.createElement(
-	              _reactBootstrap.FormControl,
-	              {
-	                componentClass: 'select',
-	                placeholder: 'select university',
-	                onChange: function onChange(e) {
-	                  _this2.props.changeState({ university: e.target.value });
-	                }
-	              },
-	              _react2.default.createElement(
-	                'option',
-	                { value: '' },
-	                'University'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Oxford' },
-	                'Oxford'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Cambridge' },
-	                'Cambridge'
-	              )
-	            )
+	            _react2.default.createElement(_reactBootstrap.FormControl, {
+	              type: 'text',
+	              placeholder: 'enter a subject',
+	              value: this.props.values.university,
+	              onChange: function onChange(e) {
+	                _this2.props.changeState({ university: e.target.value });
+	              }
+	            })
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.FormGroup,
@@ -45352,6 +45336,7 @@
 	              {
 	                componentClass: 'select',
 	                placeholder: 'select subject Group',
+	                value: this.props.values.subjectGroup,
 	                onChange: function onChange(e) {
 	                  _this2.props.changeState({ subjectGroup: e.target.value });
 	                }
@@ -45395,6 +45380,7 @@
 	            _react2.default.createElement(_reactBootstrap.FormControl, {
 	              type: 'text',
 	              placeholder: 'school location',
+	              value: this.props.values.location,
 	              onChange: function onChange(e) {
 	                _this2.props.changeState({ location: e.target.value.toLowerCase() });
 	              }
@@ -45625,31 +45611,13 @@
 	              null,
 	              'University'
 	            ),
-	            _react2.default.createElement(
-	              _reactBootstrap.FormControl,
-	              {
-	                componentClass: 'select',
-	                placeholder: 'select university',
-	                onChange: function onChange(e) {
-	                  _this2.setState({ university: e.target.value });
-	                }
-	              },
-	              _react2.default.createElement(
-	                'option',
-	                { value: '' },
-	                'University'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Oxford' },
-	                'Oxford'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Cambridge' },
-	                'Cambridge'
-	              )
-	            )
+	            _react2.default.createElement(_reactBootstrap.FormControl, {
+	              type: 'text',
+	              placeholder: 'University',
+	              onChange: function onChange(e) {
+	                _this2.setState({ university: e.target.value });
+	              }
+	            })
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.FormGroup,

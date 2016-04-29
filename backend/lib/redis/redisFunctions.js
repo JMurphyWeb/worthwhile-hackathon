@@ -22,33 +22,6 @@ const getAllVolunteers = (cb) => {
   })
 }
 
-// const testFunc = () => {
-//   getAllVolunteers((reply) => {
-//     console.log('length before: ', JSON.parse(reply).length)
-//   })
-
-//   // addNewVolunteer({
-//   //   firstName: 'stuff',
-//   //   surname: 'stuff',
-//   //   phoneNumber: 'stuff',
-//   //   emailAddress: 'stuff',
-//   //   subjectGroup: 'stuff',
-//   //   subject: 'stuff',
-//   //   university: 'stuff',
-//   //   dbsStatus: 'stuff',
-//   //   starRating: 'stuff',
-//   //   notes: 'stuff'
-//   // })
-
-//   // setTimeout(getAllVolunteers.bind(null, (reply) => {
-//   //   console.log('length after: ', JSON.parse(reply).length)
-//   // }), 1000)
-  
-
-// }
-
-// testFunc()
-
 module.exports = {
   addNewVolunteer,
   getAllVolunteers
