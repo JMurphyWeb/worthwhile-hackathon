@@ -8,6 +8,7 @@ const getDatabase = () => {
 
 const processDatabase = (string) => {
   return string.split('\n')
+    .slice(1)
     .map((rowString) => rowString.split('\t'))
     .map((rowArray, i) => {
       console.log(rowArray[1], i);
@@ -15,7 +16,7 @@ const processDatabase = (string) => {
       return rowArray
     })
     .map((r) => {
-      return [r[1], r[2], r[3], r[4], r[6].slice(0, 1), r[6].slice(1), r[7], r[9], r[14], r[13]]
+      return [r[1], r[2], r[3], r[4], r[6].slice(0, 1), r[6].slice(1), r[7], r[8], r[9], r[14], r[13]]
     })
 }
 
@@ -29,9 +30,10 @@ const logDatabase = (array) => {
       subjectGroup: item[4],
       subject: item[5],
       university: item[6],
-      dbsStatus: item[7],
-      starRating: item[8],
-      notes: item[9]
+      location: item[7],
+      dbsStatus: item[8],
+      starRating: item[9],
+      notes: item[10]
     }
     return volunteer
   })
