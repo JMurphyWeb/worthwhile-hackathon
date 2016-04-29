@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Row, Col, FormGroup, Checkbox} from 'react-bootstrap'
+import { Button, Row, Col, FormGroup, Checkbox } from 'react-bootstrap'
 
 export default (props) => {
   const volunteer = props.volunteer
@@ -14,7 +14,12 @@ export default (props) => {
         <Col sm={3}> {volunteer.notes} </Col>
         <Col sm={1}>
           <FormGroup>
-            <Checkbox inline>
+            <Checkbox
+              inline
+              onChange={ (e) => {
+                props.changeChecked(volunteer.index, e.target.checked)
+              }}
+              >
             </Checkbox>
           </FormGroup>
         </Col>

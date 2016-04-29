@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Row, Col, FormGroup, Checkbox} from 'react-bootstrap'
+import { Button, Row, Col, FormGroup, Checkbox } from 'react-bootstrap'
 import ListItem from '../ListItem'
 
 export default (props) => {
@@ -19,7 +19,7 @@ export default (props) => {
         </Row>
       </li>
       {props.volunteers.map((volunteer) => {
-        return <ListItem volunteer={volunteer} />
+        return <ListItem changeChecked={props.changeChecked} volunteer={volunteer} />
       })}
     </ul>
   )
