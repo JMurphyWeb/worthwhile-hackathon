@@ -28,14 +28,14 @@ export default (props) => {
 const ulStyle = {
   padding: '2em',
   borderRadius: '10px',
-  color: 'black',
+  color: '#154750',
   position: 'inherit',
-  listStyleType: 'none',
-  backgroundColor: 'steelblue'
+  listStyleType: 'none'
 }
 
 const liStyle = {
-  color: 'black',
+  color: '#154750',
   fontSize: '1.1em',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  marginTop: '5px'
 }
