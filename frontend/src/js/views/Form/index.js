@@ -99,14 +99,10 @@ export default class VolunteerForm extends React.Component {
               University
             </ControlLabel>
             <FormControl
-              componentClass="select"
-              placeholder="select university"
+              type="text"
+              placeholder="University"
               onChange={(e) => {this.setState({university: e.target.value})}}
-            >
-              <option value=''>University</option>
-              <option value="Oxford">Oxford</option>
-              <option value="Cambridge">Cambridge</option>
-            </FormControl>
+              />
           </FormGroup>
 
           <FormGroup controlId="selectLocation">

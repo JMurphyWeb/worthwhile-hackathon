@@ -13,6 +13,7 @@ export default class Filters extends React.Component {
             <FormControl
               type="text"
               placeholder="enter a subject"
+              value={this.props.values.subject}
               onChange={(e) => {this.props.changeState({subject: e.target.value.toLowerCase()})}}
               />
           </FormGroup>
@@ -23,14 +24,11 @@ export default class Filters extends React.Component {
               University
             </ControlLabel>
             <FormControl
-              componentClass="select"
-              placeholder="select university"
+              type="text"
+              placeholder="enter a subject"
+              value={this.props.values.university}
               onChange={(e) => {this.props.changeState({university: e.target.value})}}
-            >
-              <option value=''>University</option>
-              <option value="Oxford">Oxford</option>
-              <option value="Cambridge">Cambridge</option>
-            </FormControl>
+              />
           </FormGroup>
 
           <FormGroup controlId="filterSubjectGroup">
@@ -40,6 +38,7 @@ export default class Filters extends React.Component {
             <FormControl
               componentClass="select"
               placeholder="select subject Group"
+              value={this.props.values.subjectGroup}
               onChange={(e) => {this.props.changeState({subjectGroup: e.target.value})}}
               >
               <option value=''>Subject Group</option>
@@ -56,6 +55,7 @@ export default class Filters extends React.Component {
             <FormControl
               type="text"
               placeholder="school location"
+              value={this.props.values.location}
               onChange={(e) => {this.props.changeState({location: e.target.value.toLowerCase()})}}              
               />
           </FormGroup>

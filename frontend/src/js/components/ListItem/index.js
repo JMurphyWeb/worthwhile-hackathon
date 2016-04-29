@@ -16,6 +16,7 @@ export default (props) => {
           <FormGroup>
             <Checkbox
               inline
+              checked={volunteer.checked}
               onChange={ (e) => {
                 props.changeChecked(volunteer.index, e.target.checked)
               }}
