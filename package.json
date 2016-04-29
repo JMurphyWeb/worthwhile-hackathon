@@ -4,7 +4,7 @@
   "description": "Web app to help Oxfizz find suitable volunteers",
   "main": "index.js",
   "scripts": {
-    // "prestart": "webpack --progress --config webpack.config.js && babel backend/lib -d backend/dist --presets es2015,stage-1",
+    "prestart": "webpack --progress --config webpack.config.js && babel backend/lib -d backend/dist --presets es2015,stage-1",
     "start": "node backend/dist/index.js",
     "nodemon": "nodemon backend/lib/server.js --exec babel-node --presets es2015,stage-1",
     "server-build": "babel backend/lib -d backend/dist --presets es2015,stage-1",
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/jmurphyweb/worthwhile-hackathon#readme",
   "devDependencies": {
+  },
+  "dependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
@@ -39,8 +41,6 @@
     "tape": "^4.5.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
     "axios": "^0.9.1",
     "bluebird": "^3.3.4",
     "env2": "^2.0.7",
