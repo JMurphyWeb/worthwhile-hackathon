@@ -2,6 +2,13 @@ import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router'
 
+const styles = {
+  img: {
+    height: '100%',
+    width: '70px'
+  }
+}
+
 export default class Header extends React.Component {
   constructor () {
     super()
@@ -18,7 +25,7 @@ export default class Header extends React.Component {
         <Navbar.Header>
           <Navbar.Brand>
             <Link to={'/'}>
-              <img src={this.props.logoUrl}></img>
+              <img  style={styles.img} src={this.props.logoUrl}></img>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
