@@ -42,6 +42,6 @@ const logDatabase = (array) => {
   console.log(array)
 }
 
-module exports = () => {
+module.exports = () => {
   logDatabase(processDatabase(getDatabase()))
 }
