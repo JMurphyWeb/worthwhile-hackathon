@@ -4,7 +4,7 @@
   "description": "Web app to help Oxfizz find suitable volunteers",
   "main": "index.js",
   "scripts": {
-    "nodemon": "nodemon backend/lib/server.js --exec babel-node --presets es2015,stage-1",
+    "nodemon": "nodemon backend/dist/server.js --exec babel-node --presets es2015,stage-1",
     "prestart": "babel backend/lib -d backend/dist --presets es2015,stage-1",
     "start": "node backend/dist/server.js",
     "dev": "webpack-dev-server --hot --inline --content-base public/",
