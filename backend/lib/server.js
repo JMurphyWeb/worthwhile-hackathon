@@ -1,5 +1,8 @@
 require('env2')('./config.env')
 
+import func from './redis/database.js'
+func()
+
 import Hapi from 'hapi'
 const server = new Hapi.Server()
 const port = process.env.PORT || 4000
