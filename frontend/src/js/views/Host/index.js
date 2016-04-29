@@ -26,14 +26,13 @@ export default class HostView extends Component {
         ? Object.assign({}, vol, {checked: false})
         : vol
     })
-
     this.setState({ volunteers: newVols })
   }
 
   changeChecked (i, bool) {
     const newVols = [
       ...this.state.volunteers.slice(0,i),
-      Object.assign({}, this.state.volunteers[i], {checked: bool}),
+      Object.assign({}, this.state.volunteers[i], {checked: !this.state.volunteers[i].checked}),
       ...this.state.volunteers.slice(i + 1)
     ]
     this.setState({ volunteers: newVols })
@@ -65,7 +64,7 @@ export default class HostView extends Component {
   render () {
     const filteredList = this.state.volunteers.filter((x) => {
       return (this.state.university.length > 0)
-        ? x.university === this.state.university
+        ? x.university.indexOf(this.state.university) > -1
         : true
     }).filter( x => {
       return (this.state.subjectGroup.length > 0)
@@ -79,7 +78,7 @@ export default class HostView extends Component {
         <Grid>
           <Row>
             <Col md={12}>
-              <Filters changeState={this.changeState}/>
+              <Filters values={this.state} changeState={this.changeState}/>
             </Col>
           </Row>
           <Row>
